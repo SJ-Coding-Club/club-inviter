@@ -1,5 +1,6 @@
 from github import Github
 import os
+import time
 g = Github(os.environ.get('GITHUB_EMAIL'),os.environ.get('GITHUB_PASSWORD'))
 club = g.get_organization('SJ-Coding-Club')
 for issue in club.get_repo('sj-coding-club.github.io').get_issues():
@@ -8,3 +9,4 @@ for issue in club.get_repo('sj-coding-club.github.io').get_issues():
             club.invite_user(user=issue.user)
         else:
             issue.edit(state='closed')
+time.sleep(15)            
